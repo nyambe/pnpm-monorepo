@@ -27,16 +27,31 @@ To get started with this monorepo template, follow these steps:
    pnpm install
    ```
 
-## Usage
+## Setup
 
-To run any of the applications within the monorepo, navigate to the respective application directory under `apps/` and start the development server. For example, to start `app`:
-
+```bash
+pnpm install
 ```
-cd apps/app
+
+## Development
+
+```bash
+# all packages
 pnpm dev
+
+# app only
+pnpm app dev
 ```
 
-Repeat the process for `app1` or any other applications within the monorepo.
+## Production
+
+```bash
+# all packages
+pnpm build
+
+# app only
+pnpm app build
+```
 
 ## Dependencies
 
@@ -46,16 +61,69 @@ Repeat the process for `app1` or any other applications within the monorepo.
 
 Ensure you have PNPM installed on your system to manage dependencies and run scripts within the monorepo.
 
-## Contributing
+## Creating an App with UI Layer
 
-Contributions are welcome! If you're interested in improving this pnpm-monorepo test template, please follow these steps:
+After successfully creating a UI layer with the package name `@nuxt-monorepo/ui`, the next step is to create a Nuxt app that inherits from the UI Nuxt layer.
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/yourFeature`).
-3. Make your changes.
-4. Commit your changes (`git commit -am 'Add some feature'`).
-5. Push to the branch (`git push origin feature/yourFeature`).
-6. Open a pull request.
+### Step 1: Initialize a New Nuxt Project
+
+1. In the `apps` directory, use the nuxi command to create a new Nuxt project named `app`:
+   ```shell
+   cd apps
+   pnpm dlx nuxi@latest init app
+   ```
+2. For consistency, rename the app package to `@nuxt-monorepo/app` in `apps/app/package.json`:
+   ```json
+   - "name": "nuxt-app",
+   + "name": "@nuxt-monorepo/app",
+   ```
+3. Enter the app directory and run `pnpm install` to initialize the project:
+   ```shell
+   cd app
+   pnpm i
+   ```
+
+### Step 2: Adding the UI Layer to the App
+
+1. In the app directory, add the recently created `@nuxt-monorepo/ui` as a devDependency:
+   ```shell
+   pnpm add -D @nuxt-monorepo/ui
+   ```
+2. In the app's `nuxt.config.ts`, add `@nuxt-monorepo/ui` as a layer to extend from:
+   ```typescript
+   export default defineNuxtConfig({
+     devtools: {enabled: true},
+     extends: ["@nuxt-monorepo/ui"],
+   });
+   ```
+3. Try using UI's components like `TheMessage` in `app.vue`. Your app project structure should now include:
+
+   - `apps/app`
+     - `app.vue`
+     - `nuxt.config.ts`
+     - `package.json`
+     - `tsconfig.json`
+
+   Example usage in `app.vue`:
+
+   ```vue
+   <template>
+     <div>
+       <TheMessage />
+     </div>
+   </template>
+   ```
+
+After completing these settings, your app now inherits from the UI layer, allowing you to use any component from the UI package at any time through Nuxt's auto-imports feature.
+
+### Running the App
+
+To see your setup in action, start the app with the following command and observe the UI's `TheMessage` component successfully displayed in the app.
+
+```shell
+# In the directory of the app
+pnpm dev
+```
 
 ## Resources
 
