@@ -1,82 +1,65 @@
-## pnpm-monorepo Sample Template with Nuxt Layers
+# PNPM Monorepo Test Template
 
-This template demonstrates a pnpm-monorepo structure for Nuxt applications, leveraging layers for efficient UI component sharing across projects.
+This project is a pnpm-monorepo test template featuring Nuxt layers to facilitate a scalable and efficient development environment for web applications. It leverages the power of monorepos to manage multiple packages and applications within a single repository.
 
-**Key Features:**
+## Description
 
-- Pnpm monorepo for streamlined development and dependency management
-- Nuxt layers for reusable UI components
-- Tailwind CSS and Headless UI pre-configured
-- Apps directory for individual Nuxt applications
-- UI component library for code reusability
+The monorepo includes several packages under the `apps` directory, specifically:
 
-**Getting Started:**
+- `apps/app`: A Nuxt application serving as a primary test environment.
+- `apps/app1`: Another Nuxt application for additional testing scenarios.
+- `apps/ui`: A UI component library that houses reusable components. Components within this library are automatically available across other Nuxt installations in the monorepo, thanks to the integrated Nuxt-UI which brings TailwindCSS, HeadlessUI, and more for crafting beautiful, responsive UIs with ease.
 
-1. **Clone the Repository:**
+## Installation
 
-```bash
-git clone https://github.com/your-username/your-repo-name.git
+To get started with this monorepo template, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/nyambe/pnpm-monorepo
+   ```
+2. Navigate to the repository directory:
+   ```
+   cd pnpm-monorepo
+   ```
+3. Install dependencies using PNPM:
+   ```
+   pnpm install
+   ```
+
+## Usage
+
+To run any of the applications within the monorepo, navigate to the respective application directory under `apps/` and start the development server. For example, to start `app`:
+
+```
+cd apps/app
+pnpm dev
 ```
 
-2. **Install Dependencies:**
+Repeat the process for `app1` or any other applications within the monorepo.
 
-```bash
-pnpm install
-```
+## Dependencies
 
-3. **Run Applications:**
+- **PNPM:** Used for efficient dependency management across the monorepo.
+- **Nuxt:** A powerful Vue.js framework that simplifies web development.
+- **TailwindCSS, HeadlessUI:** Included via Nuxt-UI for enhanced UI development.
 
-- For `apps/app`:
+Ensure you have PNPM installed on your system to manage dependencies and run scripts within the monorepo.
 
-```bash
-pnpm run dev app
-```
+## Contributing
 
-- For `apps/app1`:
+Contributions are welcome! If you're interested in improving this pnpm-monorepo test template, please follow these steps:
 
-```bash
-pnpm run dev app1
-```
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/yourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add some feature'`).
+5. Push to the branch (`git push origin feature/yourFeature`).
+6. Open a pull request.
 
-4. **Develop UI Components:**
+## Resources
 
-Make changes to components in `apps/ui` to update all Nuxt projects in the monorepo.
-
-**Component Sharing with Nuxt Layers:**
-
-1. **Install `@nuxtjs/layers`:**
-
-```bash
-pnpm add @nuxtjs/layers
-```
-
-2. **Create Layer File (`apps/ui/nuxt.config.js`):**
-
-```javascript
-export default {
-  layers: {
-    ui: {
-      dir: ".",
-      files: ["**/*.{vue,js,ts}"],
-    },
-  },
-};
-```
-
-3. **Use Components in Other Projects:**
-
-In `nuxt.config.js` of your Nuxt application (e.g., `apps/app`):
-
-```javascript
-export default defineNuxtConfig({
-  modules: [
-    ["@nuxtjs/layers", {layers: ["@monorepo/ui"]}], // Assuming '@monorepo/ui' is your component library's layer name
-  ],
-});
-```
-
-**Additional Notes:**
-
-- Adapt layer name, component library directory, and other paths as needed.
-- Customize Tailwind CSS and Headless UI configurations in `apps/ui/tailwind.config.js` and `apps/ui/headlessui.config.js`.
-- Consider using Git branches for development and collaboration.
+- Nuxt UI: [https://ui.nuxtjs.org](https://ui.nuxtjs.org)
+- Nuxt: [https://nuxtjs.org](https://nuxtjs.org)
+- Original Article: [https://serko.dev/post/nuxt-3-monorepo](https://serko.dev/post/nuxt-3-monorepo)
+- TailwindCSS: [Official Site](https://tailwindcss.com)
