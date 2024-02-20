@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div class="px-5 max-w-3xl mx-auto">
-      <TheMessage msg="hola" />
-      <TheAccordion />
-    </div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
 <style>

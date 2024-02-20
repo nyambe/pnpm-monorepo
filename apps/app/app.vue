@@ -1,6 +1,7 @@
 <template>
   <div>
-    <TheMessage msg="Hola mundo" />
-    <TheAccordion />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
