@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheMessage msg="GIka aoo" />
+    <TheMessage msg="hola" />
     <TheAccordion />
   </div>
 </template>
