@@ -5,6 +5,6 @@
 </template>
 <script setup>
 definePageMeta({
-  layout: "buttons",
+  layout: "empty",
 });
 </script>
